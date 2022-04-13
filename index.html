@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Meme</title>
+</head>
+
+<body onload="onInit()">
+    <header class="header-container">
+        <div class="main-header main-layout space-between flex align-center">
+            <h2 class="logo">Memes</a></h2>
+            <nav class="main-nav-container">
+                <ul class="main-nav clean-list flex">
+                    <li>
+                        <a href="#" class="edit flex justify-center align-center active" onclick="onEdit()">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex justify-center align-center">Memes</a>
+                    </li>
+                    <li><a href="#" class="flex justify-center align-center">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- <section class="grid-container"> -->
+    <section class="gallery">
+
+    </section>
+    <!-- </section> -->
+
+    <section class="meme-editor">
+        <div class="canvas-container">
+            <canvas id="canvas" width="400" height="400"></canvas>
+        </div>
+
+        <div class="controllers">
+            <h2>editor</h2>
+            <input type="text" placeholder="your text" value="Test" onkeyup="onSetLineTxt(this.value)">
+        </div>
+    </section>
+
+
+    <script src="js/gallery.service.js"></script>
+    <script src="js/meme.service.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/gallery.controller.js"></script>
+</body>
+
+</html>

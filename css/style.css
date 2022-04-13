@@ -1,0 +1,76 @@
+@import '/css/helpers.css';
+@import '/css/vars.css';
+
+*{
+    box-sizing: border-box;
+}
+html{
+    font-size: 16px;
+}
+
+body{
+    margin: 0 auto;
+}
+.header-container{
+    background-color: var(--clr1);
+}
+
+/* .main-header{
+    height: 100px;
+} */
+
+.main-nav li a{
+    height: 7.7rem;
+    width: 7rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* border-inline-start: 0.1px solid black; */
+}
+
+.main-header .main-nav a {
+    text-decoration: none;
+}
+
+.canvas-container{
+    background-color:darkcyan;
+    margin : 0 auto;
+    width: 400px;
+    height: 400px;
+}
+
+canvas{
+    display: block;
+    margin: 0 auto;
+    background-color: #fff;
+
+}
+
+/* NOT WORKING YET */
+.meme-editor{
+    display: flex;
+    padding-right: 1.3rem;
+    padding-left: 1.3rem;
+    display: none;
+}
+
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    grid-gap:20px;
+    margin:2em auto;
+    padding:2em;
+}
+
+.img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: opacity .2s;
+    border-radius: 10px;
+}
+
+.img:hover{
+    opacity: 0.9;
+}
