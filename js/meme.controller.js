@@ -2,10 +2,9 @@
 let gElCanvas
 let gCtx
 
-
-function Init() {
-    renderMeme()
-}
+// function Init() {
+//     renderMeme()
+// }
 
 function getCanvas() {
     gElCanvas = document.querySelector('#canvas')
@@ -33,20 +32,24 @@ function renderMeme() {
     drawImg(meme, gElCanvas.width, gElCanvas.height)
 }
 
-function drawText(currMeme, x, y) {
-    let txt = currMeme.line[0].txt
-    let fontSize = currMeme.line[0].size
-    let align = currMeme.line[0].align
-    let color = currMeme.line[0].color
-    // gCtx.textBaseline = 'middle';
-    gCtx.textAlign = align;
-    gCtx.lineWidth = 1;
-    gCtx.font = `${fontSize}px impact`
-    gCtx.fillStyle = 'white'
-    gCtx.fill()
-    gCtx.fillText(txt, x, y)
-    gCtx.strokeStyle = color
-    gCtx.strokeText(txt, x, y)
+function drawText(currMeme, x) {
+    let lines = currMeme.line
+    lines.forEach(line => {
+        let txt = line.txt
+        let fontSize = line.size
+        let align = line.align
+        let color = line.color
+        // gCtx.textBaseline = 'middle';
+        gCtx.textAlign = align;
+        gCtx.lineWidth = 1;
+        gCtx.font = `${fontSize}px impact`
+        gCtx.fillStyle = color
+        gCtx.fill()
+        gCtx.fillText(txt, x, line.height)
+        gCtx.strokeStyle = 'white'
+        gCtx.strokeText(txt, x, line.height)
+
+    })
 }
 
 function drawImg(currMeme) {
@@ -54,7 +57,7 @@ function drawImg(currMeme) {
     img.src = `imgs/${currMeme.selectedImgId}.jpg`;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-        drawText(currMeme, gElCanvas.width / 2, gElCanvas.height / 8);
+        drawText(currMeme, gElCanvas.width / 2);
     };
 }
 
@@ -63,3 +66,47 @@ function onSetLineTxt(val) {
     renderMeme()
 }
 
+function onChangeColor(val) {
+    changeColor(val)
+    renderMeme()
+}
+
+function onIncrease() {
+    increase()
+    renderMeme()
+}
+
+function onDecrease() {
+    decrease()
+    renderMeme()
+}
+
+function onAddTxt() {
+    addTxt()
+    renderMeme()
+}
+
+function onSwitchTxt() {
+    switchTxt()
+    renderMeme()
+}
+
+function downloadCanvas(elLink) {
+    const data = gElCanvas.toDataURL()
+    elLink.href = data
+    elLink.download = 'my-canvas'
+}
+
+function onAlignLeft(val) {
+    alignLeft()
+    renderMeme()
+}
+
+
+// function drawRect(x, y) {
+//     gCtx.rect(x, y, 200, 200);
+//     gCtx.fillStyle = 'green';
+//     gCtx.fillRect(x, y, 200, 200);
+//     gCtx.strokeStyle = 'red';
+//     gCtx.stroke();
+// }

@@ -12,38 +12,78 @@
 <body onload="onInit()">
     <header class="header-container">
         <div class="main-header main-layout space-between flex align-center">
-            <h2 class="logo">Memes</a></h2>
+            <img src="/imgs/DESIGN/LOGO/LOGO.png" alt="" class="logo">
             <nav class="main-nav-container">
                 <ul class="main-nav clean-list flex">
                     <li>
-                        <a href="#" class="edit flex justify-center align-center active" onclick="onEdit()">Gallery</a>
+                        <a href="#" onclick="onEdit()">Gallery</a>
                     </li>
                     <li>
-                        <a href="#" class="flex justify-center align-center">Memes</a>
+                        <a href="#">Memes</a>
                     </li>
-                    <li><a href="#" class="flex justify-center align-center">About</a></li>
+                    <li><a href="#">About</a></li>
                 </ul>
             </nav>
+            <!-- <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button> -->
         </div>
     </header>
-    <!-- <section class="grid-container"> -->
-    <section class="gallery">
-
-    </section>
-    <!-- </section> -->
+    <section class="gallery"></section>
 
     <section class="meme-editor">
         <div class="canvas-container">
             <canvas id="canvas" width="400" height="400"></canvas>
         </div>
 
+
         <div class="controllers">
-            <h2>editor</h2>
-            <input type="text" placeholder="your text" value="Test" onkeyup="onSetLineTxt(this.value)">
+
+            <input type="text" placeholder="Write here your text" value="" name="text"
+                onkeyup="onSetLineTxt(this.value)">
+            <div class="row btn-row1">
+                <!-- SWITCH NOT WORKING YET -->
+                <button class="switch" onclick="onSwitchTxt()"><img class="img-switch"
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"
+                        alt=""></button>
+                <button class="add-txt" onclick="onAddTxt()"><img class="img-add"
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/add.png" alt=""></button>
+                <button class="delete-txt"><img class="img-delete" src="/imgs/DESIGN/Meme1 - Sergei/ICONS/trash.png"
+                        alt=""></button>
+
+            </div>
+            <input type="color" name="txtColor" onchange="onChangeColor(this.value)">
+            <div class="row btn-row2">
+                <button class="decrease" onclick="onDecrease(this)"><img class="img-decrease"
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/decrease font - icon.png" alt=""></button>
+
+                <button class="increase" onclick="onIncrease(this)"><img class="img-increase"
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/increase font - icon.png" alt=""></button>
+            </div>
+
+            <div class="row btn-row3">
+                <button class="align-left" onclick="onAlignLeft(this)"><img class="align-left"
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/align-to-left.png" alt=""></button>
+                <button class="align-center"><img class="center"
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/center-text-alignment.png" alt=""></button>
+                <button class="align-right"><img class="align-right"
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/align-to-right.png" alt=""></button>
+            </div>
+
+            <div class="row btn-row4">
+                <!-- <button class="download-btn" onclick="onDownload(this)">Download</button> -->
+                <a href="#" class="download-btn" onchange="downloadCanvas()" download="myphoto">Download</a>
+            </div>
         </div>
     </section>
 
+    <!-- <footer class="main-footer">
+        <div class="footer-logo">
+            <img src="/imgs/DESIGN/LOGO/LOGO.png" alt="" class="logo">
+        </div>
+    </footer> -->
 
+    <!-- <footer class="main-footer">
+        <img src="/imgs/DESIGN/LOGO/LOGO.png" alt="" class="logo">
+    </footer> -->
     <script src="js/gallery.service.js"></script>
     <script src="js/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
