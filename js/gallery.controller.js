@@ -53,18 +53,14 @@ function onEdit() {
 
 }
 
+function drawRect(x, y, xEnd, yEnd) {
+    gCtx.beginPath()
+    gCtx.rect(x, y, xEnd, yEnd);
+    gCtx.closePath()
+    gCtx.lineWidth = 3;
+    gCtx.strokeStyle = 'black';
+    gCtx.stroke();
+}
 
-// function toogleLinks() {
-//     const elGallery = document.querySelector('.gallery')
-//     const elEdit = document.querySelector('.edit')
-//     if (elEdit.innerText === 'Edit') {
-//         elEdit.innerText = 'Gallery'
-//         showCanvas()
-//     } else {
-//         hideCanvas()
-//         elEdit.innerText = 'Edit'
-//         elGallery.style.display = 'grid'
-//     }
-// }
 
 

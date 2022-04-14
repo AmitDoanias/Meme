@@ -18,10 +18,10 @@
                     <li>
                         <a href="#" onclick="onEdit()">Gallery</a>
                     </li>
-                    <li>
-                        <a href="#">Memes</a>
-                    </li>
                     <li><a href="#">About</a></li>
+                    <!-- <li>
+                        <a href="#">Memes</a>
+                    </li> -->
                 </ul>
             </nav>
             <!-- <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button> -->
@@ -31,59 +31,77 @@
 
     <section class="meme-editor">
         <div class="canvas-container">
-            <canvas id="canvas" width="400" height="400"></canvas>
+            <canvas id="canvas" width="400" height="400" style="border: 1px solid black;"></canvas>
         </div>
 
-
         <div class="controllers">
-
-            <input type="text" placeholder="Write here your text" value="" name="text"
+            <input class="text-input" type="text" name="txt-line" placeholder="Write your text"
                 onkeyup="onSetLineTxt(this.value)">
             <div class="row btn-row1">
-                <!-- SWITCH NOT WORKING YET -->
-                <button class="switch" onclick="onSwitchTxt()"><img class="img-switch"
+                <button class="switch" onclick="onSwitchTxt(),onFocus()"><img class="img-switch"
                         src="/imgs/DESIGN/Meme1 - Sergei/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"
                         alt=""></button>
                 <button class="add-txt" onclick="onAddTxt()"><img class="img-add"
                         src="/imgs/DESIGN/Meme1 - Sergei/ICONS/add.png" alt=""></button>
-                <button class="delete-txt"><img class="img-delete" src="/imgs/DESIGN/Meme1 - Sergei/ICONS/trash.png"
-                        alt=""></button>
-
+                <button class="delete-txt" onclick="onDeleteLine()"><img class="img-delete"
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/trash.png" alt=""></button>
             </div>
-            <input type="color" name="txtColor" onchange="onChangeColor(this.value)">
+            <div class="row btn-row3">
+                <button class="btn-align-txt-left" onclick="onAlign('right')"><img class="align-txt-left"
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/align-to-left.png" alt=""></button>
+                <button class="btn-align-txt-center" onclick="onAlign('center')"><img class="align-txt-center"
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/center-text-alignment.png" alt=""></button>
+                <button class="btn-align-txt-right" onclick="onAlign('left')"><img class="align-txt-right"
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/align-to-right.png" alt=""></button>
+            </div>
             <div class="row btn-row2">
-                <button class="decrease" onclick="onDecrease(this)"><img class="img-decrease"
-                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/decrease font - icon.png" alt=""></button>
-
                 <button class="increase" onclick="onIncrease(this)"><img class="img-increase"
                         src="/imgs/DESIGN/Meme1 - Sergei/ICONS/increase font - icon.png" alt=""></button>
-            </div>
-
-            <div class="row btn-row3">
-                <button class="align-left" onclick="onAlignLeft(this)"><img class="align-left"
-                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/align-to-left.png" alt=""></button>
-                <button class="align-center"><img class="center"
-                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/center-text-alignment.png" alt=""></button>
-                <button class="align-right"><img class="align-right"
-                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/align-to-right.png" alt=""></button>
+                <button class="decrease" onclick="onDecrease(this)"><img class="img-decrease"
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/decrease font - icon.png" alt=""></button>
+                <button class="btn-move-line" onclick="onMoveLine(-15)"><img
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/up.png" alt=""></button>
+                <button class="btn-move-line" onclick="onMoveLine(15)"><img
+                        src="/imgs/DESIGN/Meme1 - Sergei/ICONS/down.png" alt=""></button>
             </div>
 
             <div class="row btn-row4">
-                <!-- <button class="download-btn" onclick="onDownload(this)">Download</button> -->
-                <a href="#" class="download-btn" onchange="downloadCanvas()" download="myphoto">Download</a>
+                <select class="font-family" onchange="onChangeFont(this.value)">
+                    <option>Impact</option>
+                    <option>Georgia</option>
+                    <option>Ariel</option>
+                    <input class="change-color2" type="color" id="color" onchange="onChangeColor(this.value)">
+                    <!-- <input class="change-color" type="color" name="txtColor" onchange="onChangeColor(this.value)"> -->
+                </select>
+                <!-- NOT WORKING YET -->
+                <!-- <div class="btn-color">
+                    <button type="button" class="change-color">🎨</button>
+                    <input type="color" value="#ff0000" onchange="onChangeColor(this.value)"
+                        style="opacity:0; position:absolute; left:0;top:0;width:100%" />
+                </div> -->
+            </div>
+            <div class="row btn-row5">
+                <button class="btn-share" onclick="onUploadImg()">Share</button>
+                <form action="">
+                    <label class="file">
+                        <input type="file" name="uploadfile" onchange="onImgInput(event)">
+                    </label>
+                </form>
+            </div>
+            <div class="row btn-row6">
+                <a class="download-btn" href="#" onclick="downloadCanvas(this)"
+                    download="my-meme-canvas.jpg">Download</a>
             </div>
         </div>
     </section>
-
-    <!-- <footer class="main-footer">
-        <div class="footer-logo">
+    <footer class="main-footer">
+        <div class="main-layout"></div>
+        <div class="logo">
             <img src="/imgs/DESIGN/LOGO/LOGO.png" alt="" class="logo">
         </div>
-    </footer> -->
-
-    <!-- <footer class="main-footer">
-        <img src="/imgs/DESIGN/LOGO/LOGO.png" alt="" class="logo">
-    </footer> -->
+        <small>&copy 2022 Meme-Generator, All rights reserved</small>
+        </div>
+    </footer>
     <script src="js/gallery.service.js"></script>
     <script src="js/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>

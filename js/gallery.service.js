@@ -6,9 +6,6 @@ function getGallery() {
     return gGallery
 }
 
-createImages()
-
-
 function createImages() {
     createImage(1, `imgs/${1}.jpg`, ['funny', 'men'])
     createImage(2, `imgs/${2}.jpg`, ['funny', 'dog'])
